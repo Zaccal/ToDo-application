@@ -1,33 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.scss'
+import { BrowserRouter } from "react-router-dom"
+import RouterApp from "./components/Router/RouterApp"
+import { Context } from "./types/interfaces"
+import useLocalStore from "./components/hooks/useLocalStore"
+import Global from "./context/Global"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const localStoreValue: Omit<Context, "setLocalStore"> = {
+    ToDoTasksData: [],
+    theme: 'dark',
+  } 
+
+  const [ localStore, setLocalStore ] = useLocalStore('Data', localStoreValue)
+
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Global.Provider value={{...localStore, setLocalStore}}>
+      <BrowserRouter>
+        <RouterApp />
+      </BrowserRouter>
+    </Global.Provider>
   )
 }
 
