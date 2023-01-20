@@ -24,11 +24,19 @@
 }
 
 .search {
-    @apply focus:outline-none focus:border-light-opacity transition duration-300 relative mt-7 w-full px-[10px] py-1 rounded-[3px] bg-transparent border-2 border-dark-color;
+    @apply focus:outline-none focus:border-light-opacity transition duration-300 relative mt-7 w-full px-[10px] py-1 rounded-[3px] bg-transparent border-2 border-b-2 border-b-light-opacity border-dark-color;
     background: url('../../../assets/icons/search.svg') no-repeat 97%;
     background-size: 22px;
 }
 
 .taskLists {
-    
+    @apply mt-3 px-1;
+
+    & > div + div {
+        @apply mt-2;
+    }
+}
+
+.line {
+    @apply h-[2px] w-full bg-dark-color mb-5;
 }

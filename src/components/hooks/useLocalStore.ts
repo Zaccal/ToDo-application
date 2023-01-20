@@ -1,4 +1,3 @@
-import { getToPathname } from '@remix-run/router'
 import { useState, useEffect } from 'react'
 
 const useLocalStore = <T>(key: string, value: T): [T, (newValue: T) => void] => {

@@ -2,7 +2,8 @@ import { createContext } from "react";
 import { Context } from "../types/interfaces";
 
 const defaltValueContext: Context = {
-    ToDoTasksData: [],
+    ToDoTaskListsDefualt: [],
+    ToDoTasksListsUser: [],
     theme: 'dark',
     setLocalStore: () => undefined
 }

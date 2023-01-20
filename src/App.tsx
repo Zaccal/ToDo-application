@@ -5,8 +5,47 @@ import useLocalStore from "./components/hooks/useLocalStore"
 import Global from "./context/Global"
 
 function App() {
+  // ! Only one task list can be status true 
   const localStoreValue: Omit<Context, "setLocalStore"> = {
-    ToDoTasksData: [],
+    ToDoTasksListsUser: [
+      {
+        nameList: 'Getting started',
+        icon: 'work.png',
+        tasks: [],
+        status: false,
+        id: 1,
+      },
+      {
+        nameList: 'Products',
+        icon: 'products.png',
+        tasks: [],
+        status: false,
+        id: 2,
+      }
+    ],
+    ToDoTaskListsDefualt: [
+      {
+        nameList: 'My day',
+        icon: 'sunny.png',
+        tasks: [],
+        status: true,
+        id: 1,
+      },
+      {
+        nameList: 'Important',
+        icon: 'danger.png',
+        tasks: [],
+        status: false,
+        id: 2,
+      },
+      {
+        nameList: 'Tasks',
+        icon: 'clipboard.png',
+        tasks: [],
+        status: false,
+        id: 3,
+      }
+    ],
     theme: 'dark',
   } 
 

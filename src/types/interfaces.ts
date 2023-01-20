@@ -7,10 +7,19 @@ export interface ToDoTask {
     id: number,
 }
 
-export interface Context<T = (newVlaue: any) => void> {
-    ToDoTasksData: ToDoTask[]
+export interface ToDoTaskLists {
+    nameList: string,
+    icon?: '../assets/icons/clipboard.png' | string,
+    tasks: ToDoTask[],
+    status: boolean,
+    id: number
+}
+
+export interface Context {
+    ToDoTasksListsUser: ToDoTaskLists[],
+    ToDoTaskListsDefualt: ToDoTaskLists[],
     theme: 'dark' | 'light',
-    setLocalStore: T
+    setLocalStore: (newVlaue: Omit<Context, "setLocalStore">) => void
 }
 
 export interface RouteData {

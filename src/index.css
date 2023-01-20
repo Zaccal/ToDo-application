@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+    *::before, *::after, * {
+        @apply transition;
+    }
+
     /* Dark mode version colors var */
     html.dark {
-        --full-light: #6B728E;
-        --light-opacity: rgba(217, 217, 217, 0.1);
+        --full-light: #D9D9D91A;
+        --light-opacity: #6B728E;
         --avarage-color: #474E68;
         --dark-color: #404258;
         --full-dark: #474E68;
