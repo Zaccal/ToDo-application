@@ -15,10 +15,15 @@ export interface ToDoTaskLists {
     id: number
 }
 
+export interface SettingsData {
+    headerTitle: string,
+    theme: 'dark' | 'light',
+}
+
 export interface Context {
     ToDoTasksListsUser: ToDoTaskLists[],
     ToDoTaskListsDefualt: ToDoTaskLists[],
-    theme: 'dark' | 'light',
+    Settings: SettingsData,
     setLocalStore: (newVlaue: Omit<Context, "setLocalStore">) => void
 }
 

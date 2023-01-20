@@ -7,6 +7,10 @@ import Global from "./context/Global"
 function App() {
   // ! Only one task list can be status true 
   const localStoreValue: Omit<Context, "setLocalStore"> = {
+    Settings: {
+      headerTitle: 'ToDo',
+      theme: 'dark',
+    },
     ToDoTasksListsUser: [
       {
         nameList: 'Getting started',
@@ -46,7 +50,6 @@ function App() {
         id: 3,
       }
     ],
-    theme: 'dark',
   } 
 
   const [ localStore, setLocalStore ] = useLocalStore('Data', localStoreValue)

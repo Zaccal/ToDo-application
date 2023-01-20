@@ -2,9 +2,12 @@ import { createContext } from "react";
 import { Context } from "../types/interfaces";
 
 const defaltValueContext: Context = {
+    Settings: {
+        headerTitle: '',
+        theme: 'dark',
+    },
     ToDoTaskListsDefualt: [],
     ToDoTasksListsUser: [],
-    theme: 'dark',
     setLocalStore: () => undefined
 }
 

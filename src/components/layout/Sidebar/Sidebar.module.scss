@@ -6,6 +6,10 @@
     @apply p-[10px];
 }
 
+.changeTitleInput {
+    @apply py-2 pl-2 bg-transparent focus:outline-none border-2 border-dark-color border-b-light-opacity;
+}
+
 .sidebarHeader {
     @apply w-full pb-5  border-b-2 border-b-dark-color;
     @extend .sidebarContainer;
