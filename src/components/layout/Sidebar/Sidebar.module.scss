@@ -28,7 +28,7 @@
 }
 
 .search {
-    @apply focus:outline-none focus:border-light-opacity transition duration-300 relative mt-7 w-full px-[10px] py-1 rounded-[3px] bg-transparent border-2 border-b-2 border-b-light-opacity border-dark-color;
+    @apply focus:outline-none focus:border-light-opacity transition duration-300 relative mt-7 w-full px-[10px] py-1 rounded-[3px] bg-transparent border-[1px] border-light-opacity;
     background: url('../../../assets/icons/search.svg') no-repeat 97%;
     background-size: 22px;
 }

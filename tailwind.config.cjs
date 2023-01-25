@@ -12,6 +12,7 @@ module.exports = {
         'avarage-color': 'var(--avarage-color)',
         'dark-color': 'var(--dark-color)',
         'full-dark': 'var(--full-dark)',
+        'main': 'var(--main)',
       },
       height: {
         'fully-vh': '100vh',

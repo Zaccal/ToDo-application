@@ -3,11 +3,11 @@
 }
 
 .active {
-    @apply bg-full-light relative;
+    @apply bg-dark-color relative;
 
     &::before {
         content: "";
-        @apply absolute left-0 top-[20%] h-[20px] w-[2px] bg-light-opacity ml-1 rounded;
+        @apply absolute left-0 top-[20%] h-[20px] w-[2px] bg-main ml-1 rounded;
     }
 }
 

@@ -9,11 +9,12 @@
 
     /* Dark mode version colors var */
     html.dark {
-        --full-light: #D9D9D91A;
-        --light-opacity: #6B728E;
-        --avarage-color: #474E68;
-        --dark-color: #404258;
-        --full-dark: #474E68;
+        --full-light: #b6c4cd;
+        --light-opacity: #9ba7ae;
+        --avarage-color: #211f24;
+        --dark-color: rgb(61, 63, 64);
+        --full-dark: #0b132b;
+        --main: #14bdeb;
     }
 
     /* Light mode version colors var */
