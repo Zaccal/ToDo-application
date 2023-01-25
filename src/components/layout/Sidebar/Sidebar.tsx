@@ -15,8 +15,8 @@ const Sidebar = () => {
   const pressKeyForChangeTitleStatus = (event: KeyboardEvent<HTMLInputElement>) => {
     const key = event.key
   
-    if (key === 'Enter' || key === 'Escape' && event.currentTarget.value.length > 1) {
-      setChangeTitleStatus(false)
+    if (key === 'Enter' || key === 'Escape') {
+      event.currentTarget.value.length > 1 && setChangeTitleStatus(false)
     }
 
     else {
@@ -34,7 +34,7 @@ const Sidebar = () => {
                 <input 
                 type="text" 
                 value={Settings.headerTitle} 
-                onBlur={() => setChangeTitleStatus(false)}
+                onBlur={event => event.target.value.length > 1 && setChangeTitleStatus(false)}
                 onKeyUp={event => pressKeyForChangeTitleStatus(event)}
                 autoFocus 
                 onChange={event => setLocalStore({ToDoTaskListsDefualt, ToDoTasksListsUser, Settings: {...Settings, headerTitle: event.target.value}})} 
@@ -65,6 +65,8 @@ const Sidebar = () => {
             }}/>
 
           </div>
+
+          {/*  */}
     </div>
   )
 }
