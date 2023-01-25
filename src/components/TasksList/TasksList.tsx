@@ -2,6 +2,7 @@ import { useContext } from "react";
 import TasksDerectoryIcon from "../../assets/icons/task.png";
 import classes from "./TasksList.module.scss";
 import Global from "../../context/Global";
+import { ToDoTaskLists } from "../../types/interfaces";
 
 interface TasksListProps {
   status: boolean;
@@ -12,7 +13,7 @@ interface TasksListProps {
 }
 
 const TasksList = ({status, name, nameFileIcon, id, sheetToСhange}: TasksListProps) => {
-  const { setLocalStore, ToDoTasksListsUser, theme, ToDoTaskListsDefualt } = useContext(Global);
+  const { setLocalStore, ToDoTasksListsUser, Settings, ToDoTaskListsDefualt } = useContext(Global);
 
   const resultCheckingIcon = () => {
     if (!!nameFileIcon || false) {
@@ -24,45 +25,58 @@ const TasksList = ({status, name, nameFileIcon, id, sheetToСhange}: TasksListPr
     return <img src={TasksDerectoryIcon} alt="defualt-icon-list-tasks" />;
   };
 
-  const changeTaskListStatus = () => {
-    const desiableAllListsStatusDefualtList = ToDoTaskListsDefualt.map(list => list.status = false)
-    const desiableAllListsStatusUserList = ToDoTasksListsUser.map(list => list.status = false)
-
-    setLocalStore({
-      ToDoTaskListsDefualt: desiableAllListsStatusDefualtList,
-      ToDoTasksListsUser: desiableAllListsStatusUserList,       
-      theme,
+  const disableAllToDoListsStatusActive = () => {
+    const disabledStatusDefualtList = [...ToDoTaskListsDefualt].map(list => {
+      list.status = false
+      return list
+    })
+    
+    const disabledStatusUserList = [...ToDoTasksListsUser].map(list => {
+      list.status = false
+      return list
     })
 
+    return {disabledStatusDefualtList, disabledStatusUserList}
+  }
+
+  const changeTaskListStatus = () => {    
+    const {disabledStatusDefualtList, disabledStatusUserList} = disableAllToDoListsStatusActive()
+
     if (sheetToСhange === 'defualtLists') {
-      const changedStatusToDoLists = ToDoTaskListsDefualt.filter((list) => {
+      const changedStatusToDoLists = [...ToDoTaskListsDefualt].map(list => {
         if (list.id === id) {
-          return (list.status = true);
+          list.status = true
+          return list
         }
-  
-        return list;
-      });
+
+        list.status = false 
+        
+        return list
+      })
+
 
       setLocalStore({
         ToDoTaskListsDefualt: changedStatusToDoLists,
-        theme,
-        ToDoTasksListsUser,
+        ToDoTasksListsUser: disabledStatusUserList,
+        Settings,
       })
     }
 
     else {
       const changedStatusToDoLists = ToDoTasksListsUser.filter((list) => {
         if (list.id === id) {
-          return (list.status = true);
+          list.status = true;
+          return list
         }
-  
+        
+        list.status = false
         return list;
       });
 
       setLocalStore({
         ToDoTasksListsUser: changedStatusToDoLists,
-        theme,
-        ToDoTaskListsDefualt,
+        ToDoTaskListsDefualt: disabledStatusDefualtList,
+        Settings,
       })
     }
   };
@@ -70,7 +84,9 @@ const TasksList = ({status, name, nameFileIcon, id, sheetToСhange}: TasksListPr
   return (
     <div
       className={`${classes.directory} ${!status ? "" : classes.active}`}
-      onClick={changeTaskListStatus}
+      onClick={() => {
+        changeTaskListStatus()
+      }}
     >
       <div className={classes.container}>
         {resultCheckingIcon()}
