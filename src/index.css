@@ -14,7 +14,6 @@
         --avarage-color: #211f24;
         --dark-color: rgb(61, 63, 64);
         --full-dark: #0b132b;
-        --main: #14bdeb;
     }
 
     /* Light mode version colors var */
@@ -28,5 +27,6 @@
 
     body {
         @apply text-white;
+        font-family: 'Inter', sans-serif;
     }
 }

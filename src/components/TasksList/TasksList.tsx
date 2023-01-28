@@ -2,7 +2,6 @@ import { useContext } from "react";
 import TasksDerectoryIcon from "../../assets/icons/task.png";
 import classes from "./TasksList.module.scss";
 import Global from "../../context/Global";
-import { ToDoTaskLists } from "../../types/interfaces";
 
 interface TasksListProps {
   status: boolean;

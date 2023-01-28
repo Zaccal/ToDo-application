@@ -12,13 +12,16 @@ module.exports = {
         'avarage-color': 'var(--avarage-color)',
         'dark-color': 'var(--dark-color)',
         'full-dark': 'var(--full-dark)',
-        'main': 'var(--main)',
+        'main': '#14bdeb',
       },
       height: {
         'fully-vh': '100vh',
       },
       transitionDuration: {
         DEFAULT: '500ms'
+      },
+      fontWeight: {
+        '200': '200'
       }
     },
   },

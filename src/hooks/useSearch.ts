@@ -1,4 +1,4 @@
-import { ToDoTask } from './../../types/interfaces';
+import { ToDoTask } from '../types/interfaces';
 import { useMemo } from 'react';
 
 interface useSearchArgs {

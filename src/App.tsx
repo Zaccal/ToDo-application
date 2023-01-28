@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom"
-import RouterApp from "./components/Router/RouterApp"
+import RouterApp from "./Router/RouterApp"
 import { Context } from "./types/interfaces"
-import useLocalStore from "./components/hooks/useLocalStore"
+import useLocalStore from "./hooks/useLocalStore"
 import Global from "./context/Global"
 
 function App() {

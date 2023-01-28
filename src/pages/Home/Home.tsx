@@ -1,4 +1,4 @@
-import Sidebar from "../Sidebar/Sidebar"
+import Sidebar from '../../modules/Sidebar/Sidebar'
 import classes from './Home.module.scss'
 
 const Home = () => {

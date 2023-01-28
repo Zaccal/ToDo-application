@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from '../layout/Home/Home'
+import Home from '../pages/Home/Home'
 
 const RouterApp = () => {
   return (

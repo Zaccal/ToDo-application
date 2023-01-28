@@ -1,0 +1,36 @@
+.sidebar {
+    @apply bg-avarage-color w-full h-fully-vh relative;
+}
+
+.sidebarContainer {
+    @apply p-[10px];
+}
+
+.sidebarHeader {
+    @apply w-full pb-5  border-b-2 border-b-dark-color;
+    @extend .sidebarContainer;
+
+    & h1 {
+        @apply text-3xl inline-block;
+    }
+}
+
+.title {
+    @apply flex justify-between items-center;
+}
+
+.editBtn {
+    @apply w-5 h-5;
+}
+
+.taskLists {
+    @apply mt-3 px-1;
+
+    & > div + div {
+        @apply mt-2;
+    }
+}
+
+.line {
+    @apply h-[2px] w-full bg-dark-color mb-5;
+}
