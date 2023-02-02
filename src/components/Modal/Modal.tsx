@@ -41,15 +41,12 @@ const Modal = ({status, statusHandler, closeButton, children, title}: ModalProps
 
   return (
     <div className={rootClassesBackground.join(' ')} onClick={() => statusHandler(false)}>
-      <div className={rootClassesContainer.join(' ')}>
+      <div className={rootClassesContainer.join(' ')} onClick={event => event.stopPropagation()}>
 
         {title || closeButton ? (
           <div className={`${classes.header} ${title ? '' : classes.onlyButton}`}>
             {title && <p className={classes.title}>{title}</p>}
-            {closeButton && (<CloseButton onClick={event => {
-                event.stopPropagation()
-                statusHandler(false)
-            }} />)}
+            {closeButton && (<CloseButton onClick={event => statusHandler(false)} />)}
           </div>
         ) : (<></>)}
 

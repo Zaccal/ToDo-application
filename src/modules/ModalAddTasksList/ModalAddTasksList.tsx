@@ -1,3 +1,4 @@
+import Input from "../../UI/Input/Input"
 import Modal from "../../components/Modal/Modal"
 import { setStateHundler } from "../../types/types"
 
@@ -9,7 +10,7 @@ interface ModalAddTasksListProps {
 const ModalAddTasksList = ({statusModal, handlerStatusModal}: ModalAddTasksListProps) => {
     return (
     <Modal status={statusModal} statusHandler={handlerStatusModal}>
-        
+        <Input placeholder="" />
     </Modal>
     )
 }
