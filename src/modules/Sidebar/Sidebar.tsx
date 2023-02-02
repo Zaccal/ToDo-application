@@ -6,20 +6,21 @@ import { useContext, useState } from "react";
 import Global from "../../context/Global";
 import List from "../../components/List/List";
 import TasksList from "../../components/TasksList/TasksList";
-import SearchInput from "../../UI/SearchInput/SearchInput";
+import Input from "../../UI/Input/Input";
 import Sidebar_footer from "../../components/Sidebar_footer/Sidebar_footer";
 import EditInput from "../../UI/EditInput/EditInput";
+import { setStateHundler } from "../../types/types";
 
-const Sidebar = () => {
+const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setStateHundler<boolean>}) => {
   const { Settings, ToDoTaskListsDefualt, ToDoTasksListsUser, setLocalStore } = useContext(Global);
   const [searchInput, setSearchInput] = useState<string>("");
   const [changeTitleStatus, setChangeTitleStatus] = useState<boolean>(false);
 
-  const pressKeyForChangeTitleStatus = (event: KeyboardEvent<HTMLInputElement>) => {
+  function pressKeyForChangeTitleStatus<T>(event: KeyboardEvent<HTMLInputElement>, callback: Function | T) {
     const key = event.key;
 
     if (key === "Enter" || key === "Escape") {
-      event.currentTarget.value.length > 1 && setChangeTitleStatus(false);
+      event.currentTarget.value.length > 1 && callback;
     } 
     
     else {
@@ -36,7 +37,7 @@ const Sidebar = () => {
             <EditInput
               value={Settings.headerTitle}
               onBlur={(event: FocusEvent<HTMLInputElement>) => event.target.value.length > 1 && setChangeTitleStatus(false)}
-              onKeyUp={(event) => pressKeyForChangeTitleStatus(event)}
+              onKeyUp={(event) => pressKeyForChangeTitleStatus(event, setChangeTitleStatus(false))}
               autoFocus
               onChange={(event) =>
                 setLocalStore({
@@ -66,7 +67,7 @@ const Sidebar = () => {
             )}
           </button>
         </div>
-        <SearchInput
+        <Input
           type="text"
           placeholder="Search"
           value={searchInput}
@@ -109,7 +110,7 @@ const Sidebar = () => {
           }}
         />
 
-        <Sidebar_footer />
+        <Sidebar_footer modalAddTasksListStatusHandler={modalAddTasksListHandler}/>
       </div>
     </div>
   );

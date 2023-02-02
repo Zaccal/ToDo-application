@@ -1,0 +1,7 @@
+.close {
+    @apply transition-all rounded-[9px] border-2 border-dark-color p-1;
+
+    &:hover {
+        @apply border-main;
+    }
+}

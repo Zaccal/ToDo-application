@@ -3,7 +3,7 @@
 }
 
 .input {
-    @apply focus:outline-none focus:border-light-opacity transition bg-transparent;
+    @apply focus:outline-none focus:border-light-opacity transition bg-transparent w-full;
 }
 
 .icon {

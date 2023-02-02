@@ -1,11 +1,11 @@
 import { FC, InputHTMLAttributes } from 'react';
-import classes from './SearchInput.module.scss'
+import classes from './Input.module.scss'
 
-interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     iconFileName?: string,
 }
 
-const SearchInput: FC<SearchInputProps> = (props) => {
+const Input: FC<InputProps> = (props) => {
   const {iconFileName, ...rest} = props
 
   return (
@@ -16,4 +16,4 @@ const SearchInput: FC<SearchInputProps> = (props) => {
   );
 };
 
-export default SearchInput;
+export default Input

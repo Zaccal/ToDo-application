@@ -1,11 +1,17 @@
 .sidebarFooter {
-    @apply flex justify-between items-center absolute bottom-[10px] left-[10px];
+    @apply w-full max-w-[300px] flex justify-between items-center absolute bottom-[10px] left-[10px];
 }
 
 .addTasksListButton {
     @apply font-200 text-[15px] leading-[10px] flex items-center;
 
     & img {
-        @apply max-w-[24px] max-h-[24px] mr-[8.5px];
+        @apply w-6 h-6 mr-[8.5px];
+    }
+}
+
+.settings {
+    & img {
+        @apply w-7 h-7;
     }
 }
