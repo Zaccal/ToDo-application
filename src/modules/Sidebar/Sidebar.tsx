@@ -73,6 +73,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
           value={searchInput}
           onChange={(event) => setSearchInput(event.target.value)}
           iconFileName="search.svg"
+          className="mt-7"
         />
       </div>
       <div className={classes.taskLists}>

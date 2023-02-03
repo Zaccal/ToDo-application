@@ -9,9 +9,9 @@ const Input: FC<InputProps> = (props) => {
   const {iconFileName, ...rest} = props
 
   return (
-  <div className={classes.input_container}>
+  <div className={`${props.className} ${classes.input_container}`}>
     {props.iconFileName && <img className={classes.icon} src={`../../src/assets/icons/${props.iconFileName}`} alt={`icon ${props.iconFileName}`} />}
-    <input {...rest} className={`${props.className} ${classes.input}`}/>
+    <input {...rest} className={classes.input}/>
   </div>
   );
 };

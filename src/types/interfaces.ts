@@ -9,7 +9,7 @@ export interface ToDoTask {
 
 export interface ToDoTaskLists {
     nameList: string,
-    icon?: '../assets/icons/clipboard.png' | string,
+    icon?: string,
     tasks: ToDoTask[],
     status: boolean,
     id: number

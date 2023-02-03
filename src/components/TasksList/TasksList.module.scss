@@ -17,4 +17,9 @@
     & img {
         @apply mr-3 w-5 h-5;
     }
+
+    & p {
+        text-overflow: ellipsis;
+        @apply whitespace-nowrap overflow-hidden;
+    }
 }
