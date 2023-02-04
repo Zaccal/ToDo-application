@@ -19,7 +19,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
   function pressKeyForChangeTitleStatus<T>(event: KeyboardEvent<HTMLInputElement>, callback: Function | T) {
     const key = event.key;
 
-    if (key === "Enter" || key === "Escape") {
+    if (key === "Enter" || key === "Escape") {      
       event.currentTarget.value.length > 1 && callback;
     } 
     
@@ -33,11 +33,11 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
     <div style={{ gridArea: "sidebar" }} className={classes.sidebar}>
       <div className={classes.sidebarHeader}>
         <div className={classes.title}>
-          {changeTitleStatus ? (
+          {changeTitleStatus ? ( 
             <EditInput
               value={Settings.headerTitle}
               onBlur={(event: FocusEvent<HTMLInputElement>) => event.target.value.length > 1 && setChangeTitleStatus(false)}
-              onKeyUp={(event) => pressKeyForChangeTitleStatus(event, setChangeTitleStatus(false))}
+              // onKeyUp={(event) => pressKeyForChangeTitleStatus(event, setChangeTitleStatus(false))}
               autoFocus
               onChange={(event) =>
                 setLocalStore({
