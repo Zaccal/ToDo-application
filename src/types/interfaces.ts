@@ -20,10 +20,14 @@ export interface SettingsData {
     theme: 'dark' | 'light',
 }
 
-export interface Context {
+interface LocalStore {
     ToDoTasksListsUser: ToDoTaskLists[],
     ToDoTaskListsDefualt: ToDoTaskLists[],
     Settings: SettingsData,
+}
+
+export interface Context {
+    LocalStore: LocalStore
     setLocalStore: (newVlaue: Omit<Context, "setLocalStore">) => void
 }
 

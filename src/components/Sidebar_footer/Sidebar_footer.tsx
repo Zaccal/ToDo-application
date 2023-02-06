@@ -9,17 +9,17 @@ import Global from '../../context/Global';
 import { useNavigate } from 'react-router-dom';
 
 const Sidebar_footer = ({modalAddTasksListStatusHandler}: {modalAddTasksListStatusHandler: setStateHundler<boolean>}) => {
-  const {Settings} = useContext(Global)
+  const {LocalStore} = useContext(Global)
   const navigate = useNavigate()
 
   return (
     <div className={classes.sidebarFooter}>
       <button className={classes.addTasksListButton} onClick={() => modalAddTasksListStatusHandler(true)}>
-        {Settings.theme === 'dark' ? <img src={addIcon} alt="add-icon-img" /> : <img src={addIconLightMode} alt="add-icon-img" />}
+        {LocalStore.Settings.theme === 'dark' ? <img src={addIcon} alt="add-icon-img" /> : <img src={addIconLightMode} alt="add-icon-img" />}
         <span>Add new list</span>
       </button>
       <button className={classes.settings} onClick={() => navigate('/Settings')}>
-        {Settings.theme === 'dark' ? <img src={settingsIcon} alt="setting-icon" /> : <img src={settingsIconLightMode} alt="setting-icon" />}
+        {LocalStore.Settings.theme === 'dark' ? <img src={settingsIcon} alt="setting-icon" /> : <img src={settingsIconLightMode} alt="setting-icon" />}
       </button>
     </div>
   );

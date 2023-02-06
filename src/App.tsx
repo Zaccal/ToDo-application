@@ -7,49 +7,51 @@ import Global from "./context/Global"
 function App() {
   // ! Only one task list can be status true 
   const localStoreValue: Omit<Context, "setLocalStore"> = {
-    Settings: {
-      headerTitle: 'ToDo',
-      theme: 'dark',
-    },
-    ToDoTasksListsUser: [
-      {
-        nameList: 'Getting started',
-        icon: 'work.png',
-        tasks: [],
-        status: false,
-        id: 1,
+    LocalStore: {
+      Settings: {
+        headerTitle: 'ToDo',
+        theme: 'dark',
       },
-      {
-        nameList: 'Products',
-        icon: 'products.png',
-        tasks: [],
-        status: false,
-        id: 2,
-      }
-    ],
-    ToDoTaskListsDefualt: [
-      {
-        nameList: 'My day',
-        icon: 'sunny.png',
-        tasks: [],
-        status: true,
-        id: 1,
-      },
-      {
-        nameList: 'Important',
-        icon: 'danger.png',
-        tasks: [],
-        status: false,
-        id: 2,
-      },
-      {
-        nameList: 'Tasks',
-        icon: 'clipboard.png',
-        tasks: [],
-        status: false,
-        id: 3,
-      }
-    ],
+      ToDoTasksListsUser: [
+        {
+          nameList: 'Getting started',
+          icon: 'work.png',
+          tasks: [],
+          status: false,
+          id: 1,
+        },
+        {
+          nameList: 'Products',
+          icon: 'products.png',
+          tasks: [],
+          status: false,
+          id: 2,
+        }
+      ],
+      ToDoTaskListsDefualt: [
+        {
+          nameList: 'My day',
+          icon: 'sunny.png',
+          tasks: [],
+          status: true,
+          id: 1,
+        },
+        {
+          nameList: 'Important',
+          icon: 'danger.png',
+          tasks: [],
+          status: false,
+          id: 2,
+        },
+        {
+          nameList: 'Tasks',
+          icon: 'clipboard.png',
+          tasks: [],
+          status: false,
+          id: 3,
+        }
+      ],
+    }
   } 
 
   const [ localStore, setLocalStore ] = useLocalStore('Data', localStoreValue)

@@ -12,8 +12,8 @@ interface ModalAddTasksListProps {
 }
 
 const ModalAddTasksList = ({statusModal, handlerStatusModal}: ModalAddTasksListProps) => {
-    const {Settings, ToDoTasksListsUser, ToDoTaskListsDefualt, setLocalStore} = useContext(Global)
-    const ICON_FOR_INPUT = Settings.theme === 'dark' ? 'task.png' : 'taskLightMode.png'
+    const {LocalStore, setLocalStore} = useContext(Global)
+    const ICON_FOR_INPUT = LocalStore.Settings.theme === 'dark' ? 'task.png' : 'taskLightMode.png'
     
     const [listName, setListName] = useState('')
 
@@ -26,9 +26,10 @@ const ModalAddTasksList = ({statusModal, handlerStatusModal}: ModalAddTasksListP
         }
 
         setLocalStore({
-            Settings,
-            ToDoTaskListsDefualt,
-            ToDoTasksListsUser: [...ToDoTasksListsUser, newList],
+            LocalStore: {
+                ...LocalStore,
+                ToDoTasksListsUser: [...LocalStore.ToDoTasksListsUser, newList],
+            }
         })
 
         setListName('')

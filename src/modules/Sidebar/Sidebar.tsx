@@ -13,7 +13,7 @@ import { setStateHundler } from "../../types/types";
 import Line from "../../UI/Line/Line";
 
 const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setStateHundler<boolean>}) => {
-  const { Settings, ToDoTaskListsDefualt, ToDoTasksListsUser, setLocalStore } = useContext(Global);
+  const { LocalStore, setLocalStore } = useContext(Global);
   const [searchInput, setSearchInput] = useState<string>("");
   const [changeTitleStatus, setChangeTitleStatus] = useState<boolean>(false);
 
@@ -36,24 +36,25 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
         <div className={classes.title}>
           {changeTitleStatus ? ( 
             <EditInput
-              value={Settings.headerTitle}
+              value={LocalStore.Settings.headerTitle}
               onBlur={(event: FocusEvent<HTMLInputElement>) => event.target.value.length > 1 && setChangeTitleStatus(false)}
               onKeyUp={(event) => pressKeyForChangeTitleStatus(event)}
               autoFocus
               onChange={(event) =>
                 setLocalStore({
-                  ToDoTaskListsDefualt,
-                  ToDoTasksListsUser,
-                  Settings: { ...Settings, headerTitle: event.target.value },
+                  LocalStore: {
+                    ...LocalStore,
+                    Settings: { ...LocalStore.Settings, headerTitle: event.target.value },
+                  }
                 })
               }
             />
           ) : (
-            <h1>{Settings.headerTitle}</h1>
+            <h1>{LocalStore.Settings.headerTitle}</h1>
           )}
 
           <button className={classes.editBtn}>
-            {Settings.theme === "dark" ? (
+            {LocalStore.Settings.theme === "dark" ? (
               <img
                 src={editIcon}
                 alt="editor title icon"
@@ -79,7 +80,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
       </div>
       <div className={classes.taskLists}>
         <List
-          items={ToDoTaskListsDefualt}
+          items={LocalStore.ToDoTaskListsDefualt}
           renderItem={(item) => {
             return (
               <TasksList
@@ -97,7 +98,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
         <Line/>
 
         <List
-          items={ToDoTasksListsUser}
+          items={LocalStore.ToDoTasksListsUser}
           renderItem={(item) => {
             return (
               <TasksList
