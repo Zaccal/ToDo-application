@@ -10,17 +10,18 @@ import Input from "../../UI/Input/Input";
 import Sidebar_footer from "../../components/Sidebar_footer/Sidebar_footer";
 import EditInput from "../../UI/EditInput/EditInput";
 import { setStateHundler } from "../../types/types";
+import Line from "../../UI/Line/Line";
 
 const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setStateHundler<boolean>}) => {
   const { Settings, ToDoTaskListsDefualt, ToDoTasksListsUser, setLocalStore } = useContext(Global);
   const [searchInput, setSearchInput] = useState<string>("");
   const [changeTitleStatus, setChangeTitleStatus] = useState<boolean>(false);
 
-  function pressKeyForChangeTitleStatus<T>(event: KeyboardEvent<HTMLInputElement>, callback: Function | T) {
+  function pressKeyForChangeTitleStatus<T>(event: KeyboardEvent<HTMLInputElement>) {
     const key = event.key;
 
-    if (key === "Enter" || key === "Escape") {      
-      event.currentTarget.value.length > 1 && callback;
+    if (key === "Enter" || key === "Escape" && event.currentTarget.value.length > 1) {      
+      setChangeTitleStatus(false)
     } 
     
     else {
@@ -37,7 +38,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
             <EditInput
               value={Settings.headerTitle}
               onBlur={(event: FocusEvent<HTMLInputElement>) => event.target.value.length > 1 && setChangeTitleStatus(false)}
-              // onKeyUp={(event) => pressKeyForChangeTitleStatus(event, setChangeTitleStatus(false))}
+              onKeyUp={(event) => pressKeyForChangeTitleStatus(event)}
               autoFocus
               onChange={(event) =>
                 setLocalStore({
@@ -93,7 +94,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
           }}
         />
 
-        <div className={classes.line}></div>
+        <Line/>
 
         <List
           items={ToDoTasksListsUser}

@@ -87,7 +87,7 @@ const TasksList = ({status, name, nameFileIcon, id, sheetToСhange}: TasksListPr
         changeTaskListStatus()
       }}
     >
-      <div className={classes.container}>
+      <div title={name} className={classes.container}>
         {resultCheckingIcon()}
         <p>{name}</p>
       </div>

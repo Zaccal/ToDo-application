@@ -13,7 +13,7 @@
         --light-opacity: #9ba7ae;
         --avarage-color: #211f24;
         --dark-color: rgb(61, 63, 64);
-        --full-dark: #0b132b;
+        --full-dark: #151417;
     }
 
     /* Light mode version colors var */
@@ -26,7 +26,7 @@
     }
 
     body {
-        @apply text-white;
+        @apply text-white bg-full-dark;
         font-family: 'Inter', sans-serif;
     }
 }

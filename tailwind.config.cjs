@@ -22,7 +22,7 @@ module.exports = {
       },
       fontWeight: {
         '200': '200'
-      }
+      },
     },
   },
   plugins: [],
