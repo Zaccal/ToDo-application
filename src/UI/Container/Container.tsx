@@ -20,7 +20,7 @@ const Container = ({className, children, center, maxWidth, ...props}: ContainerP
     <div {...props} style={{
       maxWidth: `${maxWidthNowSize}px`,
       ...props.style
-    }} className={`${className} ${center ? 'mx-auto' : ''}`}>{children}</div>
+    }} className={`px-5 ${className} ${center ? 'mx-auto' : ''}`}>{children}</div>
   )
 }
 

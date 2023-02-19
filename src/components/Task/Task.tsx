@@ -9,23 +9,42 @@ interface TaskProps {
 }
 
 const Task = ({TaskData}: TaskProps) => {
-  const {LocalStore} = useContext(Global)
+  const {LocalStore, setLocalStore} = useContext(Global)
   const nowActiveTasksList = useGetNowActiveTasksList()
   
   const handlerStatusTaskTick = (event: MouseEvent<HTMLButtonElement>) => {
-    const changedTaskStatus = nowActiveTasksList.tasks.map(taskItem => {
-      if (taskItem.id === TaskData.id) {
-        taskItem.status = !taskItem.status
-        return taskItem
+    const changedTaskStatusTasksLists = LocalStore.ToDoTasksLists.map(TasksList => {
+      if (TasksList.id === nowActiveTasksList.id) {
+        
+        const chanedTaskStatus =  TasksList.tasks.map(task => {
+          if (task.id === TaskData.id) {
+            task.status = !task.status
+            return task
+          }
+
+          return task
+        })
+        
+        return {...TasksList, tasks: chanedTaskStatus}
+
+      }
+    
+      return TasksList
+    })
+
+    setLocalStore({
+      LocalStore: {
+        ...LocalStore,
+        ToDoTasksLists: changedTaskStatusTasksLists,
       }
     })
   }
 
   return (
-    <div className={classes.Task}>
+    <div className={`${classes.Task} ${TaskData.status ? classes.active : ''}`}>
       <div className={classes.container}>
         <div className={classes.info}>
-          <button className={classes.tick} onClick={event => handlerStatusTaskTick(event)}>
+          <button className={`${classes.tick} ${TaskData.status ? classes.active : ''}`} onClick={event => handlerStatusTaskTick(event)}>
             {TaskData.status && '✔'}
           </button>
           <p className={classes.title}>{TaskData.title}</p>

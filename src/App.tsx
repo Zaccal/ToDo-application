@@ -19,7 +19,7 @@ function App() {
           tasks: [],
           status: true,
           background: null,
-          id: 3,
+          id: 1,
         },
         {
           nameList: 'Important',
@@ -27,7 +27,7 @@ function App() {
           tasks: [],
           status: false,
           background: null,
-          id: 4,
+          id: 2,
         },
         {
           nameList: 'Tasks',
@@ -35,7 +35,7 @@ function App() {
           tasks: [],
           status: false,
           background: null,
-          id: 5,
+          id: 3,
         },
         {
           nameList: 'Getting started',
@@ -47,7 +47,7 @@ function App() {
           }],
           status: false,
           background: null,
-          id: 1,
+          id: 4,
         },
         {
           nameList: 'Products',
@@ -55,7 +55,7 @@ function App() {
           tasks: [],
           status: false,
           background: null,
-          id: 2,
+          id: 5,
         },
       ],
     }

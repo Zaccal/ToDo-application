@@ -1,5 +1,14 @@
 .Task {
-    @apply bg-dark-color rounded-[9px] py-4 px-3;
+    @apply transition-none bg-dark-color rounded-[9px] py-4 px-3;
+
+    &.active {
+        @apply opacity-[0.8];
+
+        & p {
+            text-decoration: line-through;
+            @apply text-gray-400;
+        }
+    }
 }
 
 .container, .info {
@@ -7,5 +16,9 @@
 }
 
 .tick {
-    @apply mr-3 border-2 border-main w-6 h-6 rounded-full;
+    @apply transition-none mr-3 text-dark-color flex justify-center items-center border-2 border-main w-6 h-6 rounded-full;
+
+    &.active {
+        @apply bg-main;
+    }
 }
