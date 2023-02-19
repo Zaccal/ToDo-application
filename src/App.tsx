@@ -5,51 +5,58 @@ import useLocalStore from "./hooks/useLocalStore"
 import Global from "./context/Global"
 
 function App() {
-  // ! Only one task list can be status true 
+  // ! Only one task list can be status true and allways have ONE tasks list with status true 
   const localStoreValue: Omit<Context, "setLocalStore"> = {
     LocalStore: {
       Settings: {
         headerTitle: 'ToDo',
         theme: 'dark',
       },
-      ToDoTasksListsUser: [
+      ToDoTasksLists: [
         {
-          nameList: 'Getting started',
-          icon: 'work.png',
+          nameList: 'My day',
+          icon: 'sunny.svg',
+          tasks: [],
+          status: true,
+          background: null,
+          id: 3,
+        },
+        {
+          nameList: 'Important',
+          icon: 'danger.svg',
           tasks: [],
           status: false,
+          background: null,
+          id: 4,
+        },
+        {
+          nameList: 'Tasks',
+          icon: 'clipboard.svg',
+          tasks: [],
+          status: false,
+          background: null,
+          id: 5,
+        },
+        {
+          nameList: 'Getting started',
+          icon: 'work.svg',
+          tasks: [{
+            title: 'Something .... omsthign saokdw adiqjwd',
+            id: 1,
+            status: false,
+          }],
+          status: false,
+          background: null,
           id: 1,
         },
         {
           nameList: 'Products',
-          icon: 'products.png',
+          icon: 'products.svg',
           tasks: [],
           status: false,
-          id: 2,
-        }
-      ],
-      ToDoTaskListsDefualt: [
-        {
-          nameList: 'My day',
-          icon: 'sunny.png',
-          tasks: [],
-          status: true,
-          id: 1,
-        },
-        {
-          nameList: 'Important',
-          icon: 'danger.png',
-          tasks: [],
-          status: false,
+          background: null,
           id: 2,
         },
-        {
-          nameList: 'Tasks',
-          icon: 'clipboard.png',
-          tasks: [],
-          status: false,
-          id: 3,
-        }
       ],
     }
   } 

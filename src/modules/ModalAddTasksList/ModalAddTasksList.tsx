@@ -13,7 +13,7 @@ interface ModalAddTasksListProps {
 
 const ModalAddTasksList = ({statusModal, handlerStatusModal}: ModalAddTasksListProps) => {
     const {LocalStore, setLocalStore} = useContext(Global)
-    const ICON_FOR_INPUT = LocalStore.Settings.theme === 'dark' ? 'task.png' : 'taskLightMode.png'
+    const ICON_FOR_INPUT = LocalStore.Settings.theme === 'dark' ? 'task.svg' : 'taskLightMode.svg'
     
     const [listName, setListName] = useState('')
 
@@ -23,12 +23,13 @@ const ModalAddTasksList = ({statusModal, handlerStatusModal}: ModalAddTasksListP
             tasks: [],
             status: false,
             id: Date.now(),
+            background: null,
         }
 
         setLocalStore({
             LocalStore: {
                 ...LocalStore,
-                ToDoTasksListsUser: [...LocalStore.ToDoTasksListsUser, newList],
+                ToDoTasksLists: [...LocalStore.ToDoTasksLists, newList]
             }
         })
 

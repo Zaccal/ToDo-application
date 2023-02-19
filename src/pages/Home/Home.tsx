@@ -2,6 +2,7 @@ import Sidebar from '../../modules/Sidebar/Sidebar'
 import ModalAddTasksList from '../../modules/ModalAddTasksList/ModalAddTasksList'
 import classes from './Home.module.scss'
 import { useState } from 'react'
+import TasksClipboard from '../../modules/TasksClipboard/TasksClipboard'
 
 const Home = () => {  
   const [modalAddTasksListStatus, setModalAddTasksList] = useState<boolean>(false)
@@ -10,6 +11,7 @@ const Home = () => {
     <>
       <div className={classes.layout}>
         <Sidebar modalAddTasksListHandler={setModalAddTasksList}/>
+        <TasksClipboard />
       </div>
       <ModalAddTasksList  statusModal={modalAddTasksListStatus} handlerStatusModal={setModalAddTasksList}/>
     </>

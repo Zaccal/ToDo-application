@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import TasksDerectoryIcon from "../../assets/icons/task.png";
+import TasksDerectoryIcon from "../../assets/icons/task.svg";
 import classes from "./TasksList.module.scss";
 import Global from "../../context/Global";
 
@@ -8,10 +8,9 @@ interface TasksListProps {
   name: string;
   nameFileIcon?: string;
   id: number;
-  sheetToСhange: 'defualtLists' | 'userLists';
 }
 
-const TasksList = ({status, name, nameFileIcon, id, sheetToСhange}: TasksListProps) => {
+const TasksList = ({status, name, nameFileIcon, id}: TasksListProps) => {
   const { setLocalStore, LocalStore } = useContext(Global);
 
   const resultCheckingIcon = () => {
@@ -24,65 +23,23 @@ const TasksList = ({status, name, nameFileIcon, id, sheetToСhange}: TasksListPr
     return <img src={TasksDerectoryIcon} alt="defualt-icon-list-tasks" />;
   };
 
-  // ToDo: changed code and  optimize
-  const disableAllToDoListsStatusActive = () => {
-    const disabledStatusDefualtList = [...LocalStore.ToDoTaskListsDefualt].map(list => {
-      list.status = false
-      return list
-    })
-    
-    const disabledStatusUserList = [...LocalStore.ToDoTasksListsUser].map(list => {
-      list.status = false
-      return list
-    })
-
-    return {disabledStatusDefualtList, disabledStatusUserList}
-  }
-
   const changeTaskListStatus = () => {    
-    const {disabledStatusDefualtList, disabledStatusUserList} = disableAllToDoListsStatusActive()
+    const changedStatusTasksList = LocalStore.ToDoTasksLists.map(tasksList => {
+      if (id === tasksList.id) {
+        tasksList.status = true
+        return tasksList
+      }
 
-    if (sheetToСhange === 'defualtLists') {
-      const changedStatusToDoLists = [...LocalStore.ToDoTaskListsDefualt].map(list => {
-        if (list.id === id) {
-          list.status = true
-          return list
-        }
+      tasksList.status = false 
+      return tasksList
+    })
 
-        list.status = false 
-        
-        return list
-      })
-
-
-      setLocalStore({
-        LocalStore: {
-          ...LocalStore,
-          ToDoTaskListsDefualt: changedStatusToDoLists,
-          ToDoTasksListsUser: disabledStatusUserList,
-        }
-      })
-    }
-
-    else {
-      const changedStatusToDoLists = LocalStore.ToDoTasksListsUser.filter((list) => {
-        if (list.id === id) {
-          list.status = true;
-          return list
-        }
-        
-        list.status = false
-        return list;
-      });
-
-      setLocalStore({
-        LocalStore: {
-          ...LocalStore,
-          ToDoTasksListsUser: changedStatusToDoLists,
-          ToDoTaskListsDefualt: disabledStatusDefualtList,
-        }
-      })
-    }
+    setLocalStore({
+      LocalStore: {
+        ...LocalStore,
+        ToDoTasksLists: changedStatusTasksList
+      }
+    })
   };
 
   return (

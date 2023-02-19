@@ -1,0 +1,22 @@
+.TasksClipboard {
+}
+
+.header {
+    @apply flex justify-between items-center;
+}
+
+.title {
+    @apply mb-7 text-3xl font-bold text-main flex items-center;
+}
+
+.icon {
+    @apply mr-2 w-10 h-10;
+
+    &[alt] {
+        @apply text-xl text-white w-auto mr-4;
+    }
+}
+
+.setting {
+    @apply rounded-[9px] outline-1 outline outline-main w-[30px] h-[30px] transition-all font-bold;
+}

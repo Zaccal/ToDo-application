@@ -1,7 +1,7 @@
 import { KeyboardEvent, FocusEvent } from "react";
 import classes from "./Sidebar.module.scss";
-import editIcon from "../../assets/icons/editing.png";
-import editIconLightMode from "../../assets/icons/editingLightMode.png";
+import editIcon from "../../assets/icons/editing.svg";
+import editIconLightMode from "../../assets/icons/editingLightMode.svg";
 import { useContext, useState } from "react";
 import Global from "../../context/Global";
 import List from "../../components/List/List";
@@ -17,7 +17,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
   const [searchInput, setSearchInput] = useState<string>("");
   const [changeTitleStatus, setChangeTitleStatus] = useState<boolean>(false);
 
-  function pressKeyForChangeTitleStatus<T>(event: KeyboardEvent<HTMLInputElement>) {
+  function pressKeyForChangeTitleStatus(event: KeyboardEvent<HTMLInputElement>) {
     const key = event.key;
 
     if (key === "Enter" || key === "Escape" && event.currentTarget.value.length > 1) {      
@@ -80,11 +80,10 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
       </div>
       <div className={classes.taskLists}>
         <List
-          items={LocalStore.ToDoTaskListsDefualt}
+          items={LocalStore.ToDoTasksLists}
           renderItem={(item) => {
             return (
               <TasksList
-                sheetToСhange="defualtLists"
                 status={item.status}
                 name={item.nameList}
                 nameFileIcon={item.icon}
@@ -93,16 +92,16 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
               />
             );
           }}
+          limit={3}
         />
 
         <Line/>
 
         <List
-          items={LocalStore.ToDoTasksListsUser}
+          items={LocalStore.ToDoTasksLists}
           renderItem={(item) => {
             return (
               <TasksList
-                sheetToСhange="userLists"
                 status={item.status}
                 name={item.nameList}
                 nameFileIcon={item.icon}
@@ -111,6 +110,7 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
               />
             );
           }}
+          startWith={3}
         />
 
         <Sidebar_footer modalAddTasksListStatusHandler={modalAddTasksListHandler}/>

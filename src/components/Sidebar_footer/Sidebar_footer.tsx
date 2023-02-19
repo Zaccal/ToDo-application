@@ -1,9 +1,9 @@
 import { setStateHundler } from '../../types/types'
 import { useContext } from 'react';
-import addIcon from '../../assets/icons/addIcon.png'
-import addIconLightMode from '../../assets/icons/addIconLightMode.png'
+import addIcon from '../../assets/icons/addIcon.svg'
+import addIconLightMode from '../../assets/icons/addIconLightMode.svg'
 import settingsIcon from '../../assets/icons/settings-icon.svg'
-import settingsIconLightMode from '../../assets/icons/settingsLightMode.png' 
+import settingsIconLightMode from '../../assets/icons/settingsLightMode.svg' 
 import classes from './Sidebar_footer.module.scss'
 import Global from '../../context/Global';
 import { useNavigate } from 'react-router-dom';

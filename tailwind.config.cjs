@@ -23,6 +23,9 @@ module.exports = {
       fontWeight: {
         '200': '200'
       },
+      outlineWidth: {
+        '1': '1px;'
+      },
     },
   },
   plugins: [],

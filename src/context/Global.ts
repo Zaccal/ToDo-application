@@ -7,8 +7,7 @@ const defaltValueContext: Context = {
             headerTitle: '',
             theme: 'dark',
         },
-        ToDoTaskListsDefualt: [],
-        ToDoTasksListsUser: [],
+        ToDoTasksLists: [],
     },
     setLocalStore: () => undefined
 }

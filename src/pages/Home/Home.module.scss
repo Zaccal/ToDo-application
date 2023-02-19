@@ -2,5 +2,5 @@
     display: grid;
     grid-template-columns: minmax(320px, 1fr) repeat(5, 1fr);
     grid-template-areas: 
-        'sidebar content content content content';
+        'sidebar content content content content content';
 }

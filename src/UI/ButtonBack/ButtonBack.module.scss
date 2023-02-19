@@ -1,0 +1,7 @@
+.button {
+    @apply w-9 h-9 flex justify-center items-center border-2 rounded-full;
+
+    & img {
+        @apply w-[50%] h-[50%] pr-[2px];
+    }
+}

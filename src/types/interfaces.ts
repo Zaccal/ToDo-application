@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 export interface ToDoTask {
     status: boolean,
     title: string,
-    description: string,
+    description?: string,
     id: number,
 }
 
@@ -12,7 +12,8 @@ export interface ToDoTaskLists {
     icon?: string,
     tasks: ToDoTask[],
     status: boolean,
-    id: number
+    background: string | null; 
+    id: number,
 }
 
 export interface SettingsData {
@@ -21,9 +22,8 @@ export interface SettingsData {
 }
 
 interface LocalStore {
-    ToDoTasksListsUser: ToDoTaskLists[],
-    ToDoTaskListsDefualt: ToDoTaskLists[],
-    Settings: SettingsData,
+    ToDoTasksLists: ToDoTaskLists[]
+    Settings: SettingsData, 
 }
 
 export interface Context {

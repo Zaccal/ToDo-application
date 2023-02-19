@@ -1,0 +1,11 @@
+.Task {
+    @apply bg-dark-color rounded-[9px] py-4 px-3;
+}
+
+.container, .info {
+    @apply flex justify-between items-center;
+}
+
+.tick {
+    @apply mr-3 border-2 border-main w-6 h-6 rounded-full;
+}

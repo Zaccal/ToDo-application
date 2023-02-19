@@ -10,14 +10,14 @@ interface CloseButtonProps {
 }
 
 const CloseButton = ({width, height, onClick, className}: CloseButtonProps) => {
-  const { Settings } = useContext(Global);
+  const { LocalStore } = useContext(Global);
 
   return (
     <button onClick={onClick} className={`${className} ${classes.close}`} style={{width: width, height: height}}>
-      {Settings.theme === "dark" ? (
-        <img src="../src/assets/icons/close.png" alt="closeButton" />
+      {LocalStore.Settings.theme === "dark" ? (
+        <img src="../src/assets/icons/close.svg" alt="closeButton" />
       ) : (
-        <img src="../src/assets/icons/close.png" alt="closeButton" />
+        <img src="../src/assets/icons/close.svg" alt="closeButton" />
       )}
     </button>
   );
