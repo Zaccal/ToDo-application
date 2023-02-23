@@ -3,6 +3,7 @@ import RouterApp from "./Router/RouterApp"
 import { Context } from "./types/interfaces"
 import useLocalStore from "./hooks/useLocalStore"
 import Global from "./context/Global"
+import 'animate.css';
 
 function App() {
   // ! Only one task list can be status true and allways have ONE tasks list with status true 

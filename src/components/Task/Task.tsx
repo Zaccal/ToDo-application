@@ -1,4 +1,4 @@
-import { MouseEvent, useContext } from 'react'
+import { useContext } from 'react'
 import { ToDoTask } from '../../types/interfaces'
 import classes from './Task.module.scss'
 import useGetNowActiveTasksList from '../../hooks/useGetNowActiveTasksList'
@@ -12,7 +12,7 @@ const Task = ({TaskData}: TaskProps) => {
   const {LocalStore, setLocalStore} = useContext(Global)
   const nowActiveTasksList = useGetNowActiveTasksList()
   
-  const handlerStatusTaskTick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handlerStatusTaskTick = () => {
     const changedTaskStatusTasksLists = LocalStore.ToDoTasksLists.map(TasksList => {
       if (TasksList.id === nowActiveTasksList.id) {
         
@@ -40,17 +40,40 @@ const Task = ({TaskData}: TaskProps) => {
     })
   }
 
+  const handlerRemoveTask = () => {
+    const tasksListsWithoutItTask = LocalStore.ToDoTasksLists.map(TasksList => {
+      if (TasksList.id === nowActiveTasksList.id) {
+        const removedTaskList = TasksList.tasks.filter(task => task.id !== TaskData.id)
+        return {...TasksList, tasks: removedTaskList}
+      }
+
+      return TasksList
+    }) 
+
+    setLocalStore({
+      LocalStore: {
+        ...LocalStore,
+        ToDoTasksLists: tasksListsWithoutItTask,
+      }
+    })
+  }
+
   return (
     <div className={`${classes.Task} ${TaskData.status ? classes.active : ''}`}>
       <div className={classes.container}>
         <div className={classes.info}>
-          <button className={`${classes.tick} ${TaskData.status ? classes.active : ''}`} onClick={event => handlerStatusTaskTick(event)}>
+          <button className={`${classes.tick} ${TaskData.status ? classes.active : ''}`} onClick={() => handlerStatusTaskTick()}>
             {TaskData.status && '✔'}
           </button>
           <p className={classes.title}>{TaskData.title}</p>
         </div>
+        <div className={classes.buttons}>
+          <button className={classes.setTask}>...</button>
+          <button className={classes.removeTask} onClick={handlerRemoveTask}>
+            <img src="src/assets/icons/remove.svg" alt="remove" />
+          </button>
+        </div>
       </div>
-
     </div>
   )
 }

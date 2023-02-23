@@ -11,7 +11,11 @@
     }
 }
 
-.container, .info {
+.info {
+    @apply flex justify-between items-center;
+}
+
+.container {
     @apply flex justify-between items-center;
 }
 
@@ -21,4 +25,16 @@
     &.active {
         @apply bg-main;
     }
+}
+
+.buttons {
+    @apply flex items-center;
+}
+
+.setTask {
+    @apply rounded-[9px] border-[1px] border-gray-500 w-8 h-8;
+}
+
+.removeTask {
+    @apply w-7 h-7 ml-3;
 }

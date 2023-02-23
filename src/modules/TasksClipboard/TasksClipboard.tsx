@@ -12,7 +12,7 @@ const TasksClipboard = () => {
     <div className={classes.TasksClipboard} style={{'gridArea': 'content'}}>
         <Container maxWidth="1480" className="mt-10" center={true}>
           <div className={classes.header}>
-            <h1 className={classes.title} >
+            <h1 className={`animate__animated animate__fadeInUp ${classes.title}`} >
               {typeof(nowActiveTasksList.icon) === 'string' && (<img className={classes.icon} src={`/src/assets/icons/${nowActiveTasksList.icon}`} alt="task-list-icon"/>)}
               <span>{nowActiveTasksList.nameList}</span>
             </h1>
