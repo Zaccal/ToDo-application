@@ -1,8 +1,8 @@
 .Task {
-    @apply transition-none bg-dark-color rounded-[9px] py-4 px-3;
+    @apply mb-3 bg-dark-color rounded-[9px] py-4 px-3;
 
     &.active {
-        @apply opacity-[0.8];
+        background-color: rgb(55, 56, 56);
 
         & p {
             text-decoration: line-through;

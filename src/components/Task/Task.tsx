@@ -59,7 +59,7 @@ const Task = ({TaskData}: TaskProps) => {
   }
 
   return (
-    <div className={`${classes.Task} ${TaskData.status ? classes.active : ''}`}>
+    <div className={`animate__animated animate__fadeInUp ${classes.Task} ${TaskData.status ? classes.active : ''}`}>
       <div className={classes.container}>
         <div className={classes.info}>
           <button className={`${classes.tick} ${TaskData.status ? classes.active : ''}`} onClick={() => handlerStatusTaskTick()}>

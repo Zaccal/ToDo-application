@@ -4,13 +4,14 @@ import List from "../../components/List/List"
 import Task from "../../components/Task/Task"
 import useGetNowActiveTasksList from "../../hooks/useGetNowActiveTasksList"
 import classes from './TasksClipboard.module.scss'
+import AddTaskInput from '../../components/AddTaskInput/AddTaskInput'
 
 const TasksClipboard = () => {
   const nowActiveTasksList = useGetNowActiveTasksList()
 
   return (
     <div className={classes.TasksClipboard} style={{'gridArea': 'content'}}>
-        <Container maxWidth="1480" className="mt-10" center={true}>
+        <Container maxWidth="1480" className="h-[94%] relative mt-10" center={true}>
           <div className={classes.header}>
             <h1 className={`animate__animated animate__fadeInUp ${classes.title}`} >
               {typeof(nowActiveTasksList.icon) === 'string' && (<img className={classes.icon} src={`/src/assets/icons/${nowActiveTasksList.icon}`} alt="task-list-icon"/>)}
@@ -24,6 +25,7 @@ const TasksClipboard = () => {
           <List items={nowActiveTasksList.tasks} renderItem={taskItem => {
             return <Task TaskData={taskItem} key={taskItem.id}/>
           }}/>
+          <AddTaskInput />
         </Container>
     </div>
   )
