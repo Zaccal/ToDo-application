@@ -41,11 +41,7 @@ function App() {
         {
           nameList: 'Getting started',
           icon: 'work.svg',
-          tasks: [{
-            title: 'Something .... omsthign saokdw adiqjwd',
-            id: 1,
-            status: false,
-          }],
+          tasks: [],
           status: false,
           background: null,
           id: 4,

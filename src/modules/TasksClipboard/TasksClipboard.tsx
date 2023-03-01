@@ -5,9 +5,11 @@ import Task from "../../components/Task/Task"
 import useGetNowActiveTasksList from "../../hooks/useGetNowActiveTasksList"
 import classes from './TasksClipboard.module.scss'
 import AddTaskInput from '../../components/AddTaskInput/AddTaskInput'
+import useSortTasks from "../../hooks/useSortTasks"
 
 const TasksClipboard = () => {
   const nowActiveTasksList = useGetNowActiveTasksList()
+  const sortedTask = useSortTasks(nowActiveTasksList.tasks, 'status')
 
   return (
     <div className={classes.TasksClipboard} style={{'gridArea': 'content'}}>
@@ -22,7 +24,7 @@ const TasksClipboard = () => {
             </button>
           </div>
           <Line />
-          <List items={nowActiveTasksList.tasks} renderItem={taskItem => {
+          <List items={sortedTask} renderItem={taskItem => {
             return <Task TaskData={taskItem} key={taskItem.id}/>
           }}/>
           <AddTaskInput />
