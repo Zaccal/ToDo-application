@@ -20,9 +20,9 @@ const Sidebar = ({modalAddTasksListHandler}: {modalAddTasksListHandler: setState
   function pressKeyForChangeTitleStatus(event: KeyboardEvent<HTMLInputElement>) {
     const key = event.key;
 
-    if (key === "Enter" || key === "Escape" && event.currentTarget.value.length > 1) {      
+    if (event.currentTarget.value.length !== 0 && key === "Enter") {      
       setChangeTitleStatus(false)
-    } 
+  } 
     
     else {
       // Alert error
