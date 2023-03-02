@@ -28,5 +28,6 @@
     body {
         @apply text-white bg-full-dark;
         font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
     }
 }

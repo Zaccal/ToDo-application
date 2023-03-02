@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { ToDoTask } from '../../types/interfaces'
 import classes from './Task.module.scss'
 import useGetNowActiveTasksList from '../../hooks/useGetNowActiveTasksList'
@@ -11,6 +11,7 @@ interface TaskProps {
 const Task = ({TaskData}: TaskProps) => {
   const {LocalStore, setLocalStore} = useContext(Global)
   const nowActiveTasksList = useGetNowActiveTasksList()
+  const [removeTaskAnimate, setRemoveTaskAnimate] = useState(false)
   
   const handlerStatusTaskTick = () => {
     const changedTaskStatusTasksLists = LocalStore.ToDoTasksLists.map(TasksList => {
@@ -50,16 +51,20 @@ const Task = ({TaskData}: TaskProps) => {
       return TasksList
     }) 
 
-    setLocalStore({
-      LocalStore: {
-        ...LocalStore,
-        ToDoTasksLists: tasksListsWithoutItTask,
-      }
-    })
+    setRemoveTaskAnimate(true)
+
+    setTimeout(() => {
+      setLocalStore({
+        LocalStore: {
+          ...LocalStore,
+          ToDoTasksLists: tasksListsWithoutItTask,
+        }
+      })
+    }, 900)
   }
 
   return (
-    <div className={`animate__animated animate__fadeInUp ${classes.Task} ${TaskData.status ? classes.active : ''}`}>
+    <div className={`animate__animated ${removeTaskAnimate && `animate__fadeOutRight`} animate__fadeInUp ${classes.Task} ${TaskData.status ? classes.active : ''}`}>
       <div className={classes.container}>
         <div className={classes.info}>
           <button className={`${classes.tick} ${TaskData.status ? classes.active : ''}`} onClick={() => handlerStatusTaskTick()}>
