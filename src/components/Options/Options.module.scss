@@ -1,0 +1,17 @@
+.options {
+    @apply relative rounded-[9px] outline-1 outline w-[30px] h-[30px] transition-all font-bold;
+}
+
+.menu {
+    @apply opacity-0 transition-all absolute w-[22rem] mt-3 right-[-15%] bg-full-dark border-dark-color border-[1px] rounded-md text-left shadow-md shadow-full-dark;
+    animation: animteShow forwards;
+}
+
+@keyframes animateShow {
+    0% {
+        @apply opacity-0 top-0;
+    }
+    100% {
+        @apply opacity-100 top-[27px];
+    }
+}

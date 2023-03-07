@@ -6,6 +6,7 @@ import useGetNowActiveTasksList from "../../hooks/useGetNowActiveTasksList"
 import classes from './TasksClipboard.module.scss'
 import AddTaskInput from '../../components/AddTaskInput/AddTaskInput'
 import useSortTasks from "../../hooks/useSortTasks"
+import Options from "../../components/Options/Options"
 
 const TasksClipboard = () => {
   const nowActiveTasksList = useGetNowActiveTasksList()
@@ -19,9 +20,12 @@ const TasksClipboard = () => {
               {typeof(nowActiveTasksList.icon) === 'string' && (<img className={classes.icon} src={`/src/assets/icons/${nowActiveTasksList.icon}`} alt="task-list-icon"/>)}
               <span>{nowActiveTasksList.nameList}</span>
             </h1>
-            <button title="settings tasts list" className={classes.setting}>
-              ...
-            </button>
+            <Options title="options task list" options={[{
+              name: 'Rename list',
+              eventClick: () => undefined,
+              id: 1,
+              iconName: 'rename.svg'
+            }]}/>              
           </div>
           <Line />
           <List items={sortedTask} renderItem={taskItem => {

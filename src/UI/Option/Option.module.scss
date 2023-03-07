@@ -1,0 +1,11 @@
+.option {
+    @apply transition-all w-full flex px-6 py-3 font-normal;
+
+    &:hover {
+        @apply bg-dark-color;
+    }
+}
+
+.icon {
+    @apply w-6 h-6 mr-3;
+}
