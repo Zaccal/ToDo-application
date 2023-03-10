@@ -19,12 +19,12 @@ const Options = (props: OptionsProps) => {
     const outlineColor = props.border
         ? `1px solid ${props.border}`
         : '1px solid #14bdeb';
-    const [optionShow, setOptionShow] = useState<boolean>(false);
+    const [showAnimate, setShowAnimate] = useState<boolean>(false);
 
     return (
-        <button style={{ outline: outlineColor }} {...props} className={classes.options} onClick={() => setOptionShow(!optionShow)}>
+        <button style={{ outline: outlineColor }} {...props} className={classes.options} onClick={() => setShowAnimate(!showAnimate)}>
             ...
-            <div className={`${classes.menu} ${optionShow && 'opacity-100 z-20'}`}>
+            <div className={`${classes.menu} ${showAnimate && 'opacity-100 z-20 top-8'}`}>
                 <List
                     items={props.options}
                     renderItem={(optionData) => {
@@ -33,7 +33,7 @@ const Options = (props: OptionsProps) => {
                                 key={optionData.id}
                                 onClick={() => {
                                     optionData.eventClick();
-                                    setOptionShow(false);
+                                    setShowAnimate(false);
                                 }}
                                 iconName={optionData.iconName}
                             >
